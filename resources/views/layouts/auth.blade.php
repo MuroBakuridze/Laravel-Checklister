@@ -12,19 +12,19 @@
  </head>
     <body>
         <div class="bg-light min-vh-100 d-flex flex-row align-items-center">
-        <div class="container">
-            <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <div class="card-group d-block d-md-flex row">
-                <div class="card col-md-7 p-4 mb-0">
-                    <div class="card-body">
-                    @yield('content')
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card-group d-block d-md-flex row">
+                            <div class="card col-md-7 p-4 mb-0">
+                                <div class="card-body">
+                                    @yield('content')
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
-            </div>
-        </div>
         </div>
     </body>
     <script src="https://unpkg.com/@popperjs/core@2"></script>
