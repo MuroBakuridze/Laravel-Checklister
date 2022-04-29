@@ -24,7 +24,7 @@
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label class="form-label" for="name">{{__('Name')}}</label>
-                                        <input class="form-control" id="name" name="name" type="text" placeholder="{{__('Checklist name')}}">
+                                        <input value="{{ old('name') }}" class="form-control" id="name" name="name" type="text" placeholder="{{__('Checklist name')}}">
                                     </div>
                                 </div>
                             </div>
