@@ -46,19 +46,24 @@
                     </a>
                     <ul class="nav-group-items">
                         @foreach ($group->checklists as $checklist)
-                            <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.checklists.edit', $checklist->id) }}">
-                                <span class="nav-icon">
-                                </span> 
-                                    {{ $checklist->name }}
-                            </a>
+                            <li class="nav-group">
+                                <a class="nav-link " href="{{ route('admin.checklist_groups.checklists.edit', [$group, $checklist]) }}">
+                                    <span class="nav-icon">
+                                    </span> 
+                                        {{ $checklist->name }}
+                                </a>
                             </li>
                         @endforeach
+                        <li class="nav-group">
+                            <a class="nav-link" href="{{ route('admin.checklist_groups.checklists.create', $group) }}">
+                                {{__('New checklist')}}
+                            </a> 
+                        </li>
                     </ul>
                 </li>
             @endforeach
             <li class="nav-group">
-                <a class="nav-link" href="{{ route('admin.checklist_groups.create') }}">
+                <a class="nav-link" href="{{ route('admin.checklist_groups.create', $group) }}">
                     {{__('New checklist group')}}
                 </a> 
             </li>
