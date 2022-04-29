@@ -39,7 +39,7 @@
                     @csrf
                     @method('DELETE')
                     <div class="mt-5">
-                        <button class="btn btn-danger" type="submit" onclick="return confirm('{{__('Are you sure?')}}')";>{{__('Delete this checklist group')}}</button>
+                        <button class="btn btn-danger" type="submit" onclick="return confirm('{{__('Are you sure you want to delete: ')}} {{ $checklistGroup->name }}')";>{{__('Delete this checklist group')}}</button>
                     </div>
                 </form>
             </div>
