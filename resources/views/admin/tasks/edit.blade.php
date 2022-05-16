@@ -29,7 +29,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label" for="description">{{ __('Description') }}</label>
-                                            <textarea class="form-control" id="description" name="description" type="text" rows="5">{{ $task->description }}</textarea>
+                                            <textarea class="form-control" id="task-textarea" name="description" type="text" rows="5">{{ $task->description }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -43,4 +43,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#task-textarea' ) )
+            .catch( error => {
+                console.error( error );
+            } );
+    </script>
 @endsection

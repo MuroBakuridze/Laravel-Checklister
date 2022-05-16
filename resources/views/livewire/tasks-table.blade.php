@@ -3,6 +3,7 @@
         @foreach ($tasks as $task)
         <tr wire:sortable.item="{{ $task->id }}" wire:key="task-{{ $task->id }}" class="">
             <td class="">{{ $task->name }}</td>
+            {{-- <td class="">{!! $task->description !!}</td> --}}
             <td>
                 <a class="btn btn-sm btn-primary" href="{{ route('admin.checklists.tasks.edit', [$checklist, $task]) }}">{{ __('Edit') }}</a>
                 <form style="display: inline-block"  action="{{ route('admin.checklists.tasks.destroy', [$checklist, $task]) }}" method="POST">
