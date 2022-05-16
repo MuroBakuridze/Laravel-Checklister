@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTaskRequest;
+use App\Models\Task;
 use App\Models\Checklist;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTaskRequest;
 
 class TaskController extends Controller
 {
@@ -59,34 +60,46 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Checklist $checklist
+     * @param  Task $task
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Checklist $checklist, Task $task)
     {
-        //
+        return view('admin.tasks.edit', compact('checklist','task'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  StoreTaskRequest $request
+     * @param  Checklist $checklist
+     * @param  Task $task
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreTaskRequest $request, Checklist $checklist, Task $task)
     {
-        //
+        $task->update($request->validated());
+
+        return redirect()->route('admin.checklist_groups.checklists.edit', [
+            $checklist->checklist_group_id, $checklist
+        ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Checklist $checklist
+     * @param  Task $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Checklist $checklist, Task $task)
     {
-        //
+        $task->delete();
+
+        return redirect()->route('admin.checklist_groups.checklists.edit', [
+            $checklist->checklist_group_id, $checklist
+        ]);
     }
 }
