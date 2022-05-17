@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\PageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +21,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::group(['middleware' => 'auth'], function() {
+    Route::get('welcome', [App\Http\Controllers\PageController::class, 'welcome'])->name('welcome');
+    Route::get('consultation', [App\Http\Controllers\PageController::class, 'consultation'])->name('consultation');
+
     Route::group(['prefix' => 'admin', 'as' => 'admin.' ,'middleware' => 'is_admin'], function() {
         Route::resource('pages', App\Http\Controllers\Admin\PageController::class)->only(['edit', 'update']);
         Route::resource('checklist_groups', App\Http\Controllers\Admin\ChecklistGroupController::class);
