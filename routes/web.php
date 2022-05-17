@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PageController;
+use App\Http\Controllers\Admin\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,7 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('checklist_groups', App\Http\Controllers\Admin\ChecklistGroupController::class);
         Route::resource('checklist_groups.checklists', App\Http\Controllers\Admin\ChecklistController::class);
         Route::resource('checklists.tasks', App\Http\Controllers\Admin\TaskController::class);
+
+        Route::get('users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users.index');
     });
 });

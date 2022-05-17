@@ -60,8 +60,20 @@
                     </a>
                 </li>
             @endforeach
+            <li class="nav-title">
+                {{__('Manage Data')}}
+            </li>
+                <li class="nav-group">
+                    <a class="nav-link" href="{{ route('admin.users.index') }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}">
+                        </use>
+                        </svg> 
+                            {{ __('Users') }}
+                    </a>
+                </li>
         @endif
-        <li class="nav-title">
+        {{-- <li class="nav-title">
             {{__('Other')}}
         </li>
         <li class="nav-item">
@@ -75,7 +87,6 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                 @csrf
             </form>
-        </li>
-
+        </li> --}}
     </ul>
 </div>
