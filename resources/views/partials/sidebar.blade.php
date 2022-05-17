@@ -19,19 +19,6 @@
         </li>
         @if(auth()->user()->is_admin)
             <li class="nav-title">
-                {{__('Admin')}}
-            </li>
-            <li class="nav-group">
-                <a class="nav-link" href="{{ route('admin.pages.index') }}">
-                    <svg class="nav-icon">
-                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}">
-                    </use>
-                    </svg> 
-                        {{__('Pages')}}
-                </a>
-            </li>
-
-            <li class="nav-title">
                 {{__('Manage Checklists')}}
             </li>
             
@@ -67,27 +54,25 @@
                     {{__('New checklist group')}}
                 </a> 
             </li>
-        @endif
-        <li class="nav-group">
-            <a class="nav-link nav-group-toggle" href="#">
-                <svg class="nav-icon">
-                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}">
-                </use>
-                </svg> 
-                    Base
-            </a>
-            <ul class="nav-group-items">
-                <li class="nav-item">
-                <a class="nav-link" href="base/breadcrumb.html">
-                    <span class="nav-icon">
-                    </span> 
-                    Breadcrumb
-                </a>
-                </li>
-            </ul>
-        </li>
-        
 
+            <li class="nav-title">
+                {{__('Pages')}}
+            </li>
+            @foreach (\App\Models\Page::all() as $page)
+                <li class="nav-group">
+                    <a class="nav-link" href="{{ route('admin.pages.edit', $page) }}">
+                        <svg class="nav-icon">
+                            <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-puzzle') }}">
+                        </use>
+                        </svg> 
+                            {{ $page->title }}
+                    </a>
+                </li>
+            @endforeach
+        @endif
+        <li class="nav-title">
+            {{__('Other')}}
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <svg class="nav-icon">
