@@ -82,6 +82,24 @@
                             {{ __('Users') }}
                     </a>
                 </li>
+            @else 
+                @foreach (\App\Models\ChecklistGroup::with('checklists')->get() as $group)
+                    <li class="nav-title">
+                        {{ $group->name }}
+                    </li>
+                    <ul class="nav-group-items">
+                        @foreach ($group->checklists as $checklist)
+                            <li class="nav-group">
+                                <a class="nav-link " href="{{ route('user.checklists.show', [$checklist]) }}">
+                                    <svg class="nav-icon">
+                                        <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-list') }}">
+                                        </use>
+                                    </svg> 
+                                        {{ $checklist->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                @endforeach
         @endif
         {{-- <li class="nav-title">
             {{__('Other')}}
